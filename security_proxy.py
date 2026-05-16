@@ -37,7 +37,7 @@ class SecurityProxy(IDocumentService):
 
     def _scan_for_malicious_content(self, payload: bytes) -> bool:
         """Simulates macro/script scanning."""
-        # Always returns True for now add real scanning logic as needed
+        # Always returns True for now
         return True
 
     def upload_document(self, doc: Document) -> None:
