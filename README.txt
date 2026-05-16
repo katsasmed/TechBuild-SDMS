@@ -1,6 +1,8 @@
 # Secure Document Management System (SDMS)
 
-Backend implementation for 5CM505-TechBuild Engineering, developed using Python and FastAPI.
+Moved our Backend in GitHub for 5CM505-TechBuild Engineering, so 
+you can see and test the code.
+developed using Python and FastAPI.
 
 ## Team Members
 * Member 1 (ID: 100774094)
@@ -14,3 +16,5 @@ How to test:
     python -m uvicorn main:app --reload
  3. Connect to http://127.0.0.1:8000/docs in a browser
  4. You will find some moch users in the main.py file
+
+###Logs are inside the documentation.
