@@ -1,14 +1,19 @@
+import threading
 from typing import Dict, Any
 
 class SessionManager:
-    """Singleton class to manage and enforce active user sessions."""
+    """Thread-safe Singleton class to manage active user sessions."""
     _instance = None
+    _lock = threading.Lock() # Lock for thread safety
 
     def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super(SessionManager, cls).__new__(cls, *args, **kwargs)
-            # Initialize the state only once
-            cls._instance.active_sessions: Dict[str, Any] = {}
+        # Use the lock to ensure that only one thread 
+        # can create the instance at a time.
+        with cls._lock:
+            if not cls._instance:
+                cls._instance = super(SessionManager, cls).__new__(cls, *args, **kwargs)
+                # Initialize the state only once
+                cls._instance.active_sessions: Dict[str, Any] = {}
         return cls._instance
 
     def establish_session(self, user_id: str) -> None:
@@ -21,5 +26,4 @@ class SessionManager:
 
     def terminate_session(self, user_id: str) -> None:
         """Ends the active session for the specified user."""
-        if user_id in self.active_sessions:
-            del self.active_sessions[user_id]
+        self.active_sessions.pop(user_id, None)
