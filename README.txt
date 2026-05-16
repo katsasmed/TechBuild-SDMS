@@ -17,4 +17,4 @@ How to test:
  3. Connect to http://127.0.0.1:8000/docs in a browser
  4. You will find some moch users in the main.py file
 
-###Logs are inside the documentation.asd
+###Logs are inside the documentation.
